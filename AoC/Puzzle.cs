@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,30 +11,24 @@ namespace Advent_of_Code
 {
     interface IPuzzle
     {
-        string? inputPath { get; set; }
-        string? output1Path { get; set; }
-        string? output2Path { get; set; }
-
         void Solve();
     }
 
     abstract class Puzzle : IPuzzle
     {   
-        public string? inputPath { get; set; }
-        public string? output1Path { get; set; }
-        public string? output2Path { get; set; }
-
         public abstract void Solve();
 
         internal string? input;
         internal string? output1;
         internal string? output2;
 
-        public void ReadInput()
+        public void ReadInput([CallerFilePath] string sourceFilePath = "")
         {
-            if (!string.IsNullOrEmpty(inputPath))
+            string folderPath = new FileInfo(fileName: sourceFilePath).Directory?.FullName ?? "";
+
+            if (!string.IsNullOrEmpty(folderPath))
             {
-                input = System.IO.File.ReadAllText(inputPath);
+                input = System.IO.File.ReadAllText(folderPath + @"\Input.txt");
             }
             else
             {
@@ -40,13 +36,16 @@ namespace Advent_of_Code
             }
         }
 
-        public void WriteOutput()
+        public void WriteOutput([CallerFilePath] string sourceFilePath = "")
         {
+
+            string folderPath = new FileInfo(fileName: sourceFilePath).Directory?.FullName ?? "";
+
             if (!string.IsNullOrEmpty(output1))
             {
-                if (!string.IsNullOrEmpty(output1Path))
+                if (!string.IsNullOrEmpty(folderPath))
                 {
-                    System.IO.File.WriteAllTextAsync(output1Path, output1);
+                    System.IO.File.WriteAllTextAsync(folderPath + @"\Output1.txt", output1);
                 }
                 else
                 {
@@ -56,9 +55,9 @@ namespace Advent_of_Code
 
             if (!string.IsNullOrEmpty(output2))
             {
-                if (!string.IsNullOrEmpty(output2Path))
+                if (!string.IsNullOrEmpty(folderPath))
                 {
-                    System.IO.File.WriteAllTextAsync(output2Path, output2);
+                    System.IO.File.WriteAllTextAsync(folderPath + @"\Output2.txt", output2);
                 }
                 else
                 {

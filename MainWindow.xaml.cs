@@ -29,17 +29,9 @@ namespace Advent_of_Code
         {
             IPuzzle puzzle;
             string year = MainWindow1.SelectorYear.Text;
-            string day = "01";     
-            string basePath = @"S:\dev\github\sodr\AdventOfCode\Advent of Code";
+            string day = "01";
 
-            puzzle = new Day01
-            {
-                inputPath = @$"{basePath}\Aoc\{year}\{day}\Input.txt",
-                output1Path = @$"{basePath}\Aoc\{year}\{day}\Output1.txt",
-                output2Path = @$"{basePath}\Aoc\{year}\{day}\Output2.txt",
-            };
-
-
+            puzzle = new Day01();
             puzzle.Solve();
 
             bool yo = false;
