@@ -10,7 +10,7 @@ namespace Advent_of_Code
     class Day01 : Puzzle
     {
 
-        public override void Main()
+        public override void Solve()
         {
             ReadInput();
 

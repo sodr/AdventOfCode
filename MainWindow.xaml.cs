@@ -40,7 +40,7 @@ namespace Advent_of_Code
             };
 
 
-            puzzle.Main();
+            puzzle.Solve();
 
             bool yo = false;
         }

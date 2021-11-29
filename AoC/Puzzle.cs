@@ -13,7 +13,7 @@ namespace Advent_of_Code
         string? output1Path { get; set; }
         string? output2Path { get; set; }
 
-        void Main();
+        void Solve();
     }
 
     abstract class Puzzle : IPuzzle
@@ -22,7 +22,7 @@ namespace Advent_of_Code
         public string? output1Path { get; set; }
         public string? output2Path { get; set; }
 
-        public abstract void Main();
+        public abstract void Solve();
 
         internal string? input;
         internal string? output1;
