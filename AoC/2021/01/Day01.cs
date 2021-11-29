@@ -10,17 +10,15 @@ namespace Advent_of_Code
 {
     class Day01 : Puzzle
     {
-        public override void Solve()
+        public override string Part1()
         {
-
-            ReadInput();
-
-            output1 = input;
-
-            WriteOutput();
-
-            bool yo = true;
+            return input;
         }
-    }
 
+        public Day01()
+        {
+            AutoSetFolderPath();
+        }
+       
+    }
 }
