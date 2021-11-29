@@ -24,5 +24,25 @@ namespace Advent_of_Code
         {
             InitializeComponent();
         }
+
+        private void ButtonRun_Click(object sender, RoutedEventArgs e)
+        {
+            IPuzzle puzzle;
+            string year = MainWindow1.SelectorYear.Text;
+            string day = "01";     
+            string basePath = @"S:\dev\github\sodr\AdventOfCode\Advent of Code";
+
+            puzzle = new Day01
+            {
+                inputPath = @$"{basePath}\Aoc\{year}\{day}\Input.txt",
+                output1Path = @$"{basePath}\Aoc\{year}\{day}\Output1.txt",
+                output2Path = @$"{basePath}\Aoc\{year}\{day}\Output2.txt",
+            };
+
+
+            puzzle.Main();
+
+            bool yo = false;
+        }
     }
 }
