@@ -26,13 +26,13 @@ namespace Advent_of_Code
         {
             string folderPath = new FileInfo(fileName: sourceFilePath).Directory?.FullName ?? "";
 
-            if (!string.IsNullOrEmpty(folderPath))
+            if (File.Exists(folderPath + @"\Input.txt"))
             {
                 input = System.IO.File.ReadAllText(folderPath + @"\Input.txt");
             }
             else
             {
-                throw new Exception("no input path");
+                throw new Exception("no input file");
             }
         }
 
@@ -43,27 +43,17 @@ namespace Advent_of_Code
 
             if (!string.IsNullOrEmpty(output1))
             {
-                if (!string.IsNullOrEmpty(folderPath))
-                {
-                    System.IO.File.WriteAllTextAsync(folderPath + @"\Output1.txt", output1);
-                }
-                else
-                {
-                    throw new Exception("no input path");
-                }
+                File.WriteAllTextAsync(folderPath + @"\Output1.txt", output1);
+            }
+            else
+            {
+                throw new Exception("output1 not set");
             }
 
             if (!string.IsNullOrEmpty(output2))
             {
-                if (!string.IsNullOrEmpty(folderPath))
-                {
-                    System.IO.File.WriteAllTextAsync(folderPath + @"\Output2.txt", output2);
-                }
-                else
-                {
-                    throw new Exception("no input path");
-                }
-            }
+                File.WriteAllTextAsync(folderPath + @"\Output2.txt", output2);                
+            }            
         }
     }
 }
