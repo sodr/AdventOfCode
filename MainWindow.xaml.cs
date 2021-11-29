@@ -28,11 +28,28 @@ namespace Advent_of_Code
         private void ButtonRun_Click(object sender, RoutedEventArgs e)
         {
             IPuzzle puzzle;
-            string year = MainWindow1.SelectorYear.Text;
-            string day = "01";
+            int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
+            int day = 01;
 
-            puzzle = new Day01();
-            puzzle.Solve();
+            switch (year)
+            {
+                case 2021:
+                    {
+                        switch (day)
+                        {
+                            case 01:
+                                puzzle = new Day01();
+                                puzzle.Solve();
+                                break;
+                           
+                        }
+                    }
+                    break;
+                case 2020:
+                    break;
+
+            }
+            
 
             bool yo = false;
         }
