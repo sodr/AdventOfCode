@@ -35,10 +35,10 @@ namespace Advent_of_Code
             {
                 case 2021:
                     {
-                        switch (day)
+                    switch (day)
                         {
                             case 01:
-                                puzzle = new Day01();
+                                puzzle = new Year_2021.Day01();
                                 puzzle.Solve();
                                 break;
                            

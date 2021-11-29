@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Advent_of_Code
+namespace Advent_of_Code.Year_2021
 {
     class Day01 : Puzzle
     {
