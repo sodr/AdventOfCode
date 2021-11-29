@@ -47,11 +47,7 @@ namespace Advent_of_Code
                     break;
                 case 2020:
                     break;
-
-            }
-            
-
-            bool yo = false;
+            }            
         }
     }
 }

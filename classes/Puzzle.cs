@@ -16,7 +16,7 @@ namespace Advent_of_Code
         
         public abstract string Part1();
 
-        public string Part2()
+        public virtual string Part2()
         {
             return String.Empty;
         }

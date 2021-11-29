@@ -15,6 +15,11 @@ namespace Advent_of_Code
             return input;
         }
 
+        public override string Part2()
+        {
+            return "yo";
+        }
+
         public Day01()
         {
             AutoSetFolderPath();
