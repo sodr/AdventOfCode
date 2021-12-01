@@ -10,14 +10,14 @@ namespace Advent_of_Code.Year_2021
 {
     class Day01 : Puzzle
     {
-        public override string Part1()
+        public override string? Part1()
         {
             return input;
         }
 
-        public override string Part2()
+        public override string? Part2()
         {
-            return "yo";
+            return null;
         }
 
         public Day01()

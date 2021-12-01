@@ -6,19 +6,18 @@ namespace Advent_of_Code
 {
     interface IPuzzle
     {
-        internal string Part1();
-        internal string Part2();
+        internal string? Part1();
+        internal string? Part2();
         void Solve();
     }
 
     abstract class Puzzle : IPuzzle
-    {   
-        
-        public abstract string Part1();
+    {           
+        public abstract string? Part1();
 
-        public virtual string Part2()
+        public virtual string? Part2()
         {
-            return String.Empty;
+            return null;
         }
 
         public void Solve()
@@ -28,9 +27,9 @@ namespace Advent_of_Code
             output2 = Part2();
             WriteOutput();
         }
-
-        internal string? FolderPath;
+                
         internal string? input;
+        private string? FolderPath;
         private string? output1;
         private string? output2;
 
@@ -39,7 +38,7 @@ namespace Advent_of_Code
             FolderPath = new FileInfo(fileName: sourceFilePath).Directory?.FullName ?? ""; ;
         }
 
-        public void ReadInput([CallerFilePath] string sourceFilePath = "")
+        public void ReadInput()
         {            
             if (File.Exists(FolderPath + @"\Input.txt"))
             {
@@ -51,7 +50,7 @@ namespace Advent_of_Code
             }
         }
 
-        public void WriteOutput([CallerFilePath] string sourceFilePath = "")
+        public void WriteOutput()
         {
             if (!string.IsNullOrEmpty(output1))
             {
