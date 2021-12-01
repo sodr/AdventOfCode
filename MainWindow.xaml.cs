@@ -38,18 +38,18 @@ namespace Advent_of_Code
                 switch (year)
                 {
                     case 2021:
+                        
+                        switch (day)
                         {
-                            switch (day)
-                            {
-                                case 01:
-                                    puzzle = new Year_2021.Day01();
-                                    break;
-                                case 02:
-                                    puzzle = new Year_2021.Day02();
-                                    break;
-                            }
-                        }
+                            case 01:
+                                puzzle = new Year_2021.Day01();
+                                break;
+                            case 02:
+                                puzzle = new Year_2021.Day02();
+                                break;
+                        }                        
                         break;
+
                     case 2020:
                         break;
                 }
