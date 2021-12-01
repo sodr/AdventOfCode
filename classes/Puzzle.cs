@@ -28,7 +28,7 @@ namespace Advent_of_Code
             WriteOutput();
         }
                 
-        internal string? input;
+        internal string input = string.Empty;
         private string? FolderPath;
         private string? output1;
         private string? output2;
