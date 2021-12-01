@@ -16,56 +16,53 @@ using System.Windows.Shapes;
 
 namespace Advent_of_Code
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
 
-        private void ButtonRun_Click(object sender, RoutedEventArgs e)
-        {
-            IPuzzle? puzzle = null;
+		private void ButtonRun_Click(object sender, RoutedEventArgs e)
+		{
+			IPuzzle? puzzle = null;
 
-            int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
-            int day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
+			int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
+			int day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
 
-            try
-            {
-                switch (year)
-                {
-                    case 2021:
-                        
-                        switch (day)
-                        {
-                            case 01:
-                                puzzle = new Year_2021.Day01();
-                                break;
-                            case 02:
-                                puzzle = new Year_2021.Day02();
-                                break;
-                        }                        
-                        break;
+			try
+			{
+				switch (year)
+				{
+					case 2021:                        
+						switch (day)
+						{
+							case 01:
+								puzzle = new Year_2021.Day01();
+								break;
 
-                    case 2020:
-                        break;
-                }
+							case 02:
+								puzzle = new Year_2021.Day02();
+								break;
+						}                        
+						break;
 
-                if (puzzle != null)
-                {
-                    puzzle.Solve();
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                Debug.Fail(ex.Message);
-            }
-                       
-        }
+					case 2020:
+						break;
+				}
+				
+				puzzle?.Solve();				
+				
+			}
+			catch (Exception ex)
+			{
+				Debug.Fail(ex.Message);
+			}
+					   
+		}
 
-    }
+	}
 }

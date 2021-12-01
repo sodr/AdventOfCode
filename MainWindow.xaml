@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Advent_of_Code"
         mc:Ignorable="d"
-        Title="Advent of Code" Height="500" Width="800" ResizeMode="NoResize">
+        Title="Advent of Code" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="SingleBorderWindow">
     <Grid Background="Black">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150px"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="111*"/>
+            <ColumnDefinition Width="19*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"></RowDefinition>
@@ -17,15 +18,16 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Rectangle Stroke="Black" Grid.RowSpan="3" Fill="#FF090133"/>
-        <TextBlock x:Name="Header" TextWrapping="Wrap" Text="Advent of Code" Foreground="White" FontSize="72" HorizontalAlignment="Center" Padding="0,0,0,0" Grid.Column="1" Width="498" Grid.Row="1"/>
-        <ComboBox x:Name="SelectorYear" Grid.Row="1" SelectedIndex="0" Margin="15,0,15,10" MaxHeight="25" Padding="6,3,7,3" VerticalAlignment="Bottom">
+        <TextBlock x:Name="Header" TextWrapping="Wrap" Text="Advent of Code" Foreground="White" FontSize="72" HorizontalAlignment="Left" Padding="0,0,0,0" Grid.Column="1" Width="498" Grid.Row="1" Grid.ColumnSpan="2" Margin="76,0,0,0"/>
+        <ComboBox x:Name="SelectorYear" Grid.Row="1" SelectedIndex="0" Margin="15,58,15,0" MaxHeight="25" Padding="6,3,7,3" VerticalAlignment="Top">
             <ComboBoxItem Content="2021"/>
         </ComboBox>
-        <ComboBox x:Name="SelectorDay" Grid.Row="2" SelectedIndex="0" Margin="15,0,15,10" MaxHeight="25" Padding="6,3,7,3" VerticalAlignment="Top">
+        <ComboBox x:Name="SelectorDay" Grid.Row="2" SelectedIndex="0" Margin="15,0,15,0" MaxHeight="25" Padding="6,3,7,3" VerticalAlignment="Top">
             <ComboBoxItem Content="01"/>
             <ComboBoxItem Content="02" IsSelected="True"/>
+            <ComboBoxItem Content="03"/>
         </ComboBox>
-        <Button x:Name="ButtonRun" Content="Run" Grid.Row="2" Grid.Column="1" Margin="100,100,100,100" Background="#FF154A1A" Foreground="#FFFDFDFD" FontWeight="Bold" FontSize="24" Click="ButtonRun_Click"/>
+        <Button x:Name="ButtonRun" Content="Run" Grid.Row="2" Grid.Column="1" Margin="100,100,5,100" Background="#FF154A1A" Foreground="#FFFDFDFD" FontWeight="Bold" FontSize="24" Click="ButtonRun_Click"/>
 
 
     </Grid>
