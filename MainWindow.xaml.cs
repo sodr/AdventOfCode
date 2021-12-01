@@ -32,24 +32,22 @@ namespace Advent_of_Code
 
             int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
             int day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
-
+                        
             try
             {
                 switch (year)
                 {
                     case 2021:
+                        
+                        IPuzzle[]? puzzles = new IPuzzle[]
                         {
-                            switch (day)
-                            {
-                                case 01:
-                                    puzzle = new Year_2021.Day01();
-                                    break;
-                                case 02:
-                                    puzzle = new Year_2021.Day02();
-                                    break;
-                            }
-                        }
+                            new Year_2021.Day01(),
+                            new Year_2021.Day02()
+                        };
+
+                        puzzle = puzzles[day];                        
                         break;
+
                     case 2020:
                         break;
                 }
