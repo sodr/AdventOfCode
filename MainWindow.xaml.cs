@@ -28,7 +28,8 @@ namespace Advent_of_Code
 
         private void ButtonRun_Click(object sender, RoutedEventArgs e)
         {
-            IPuzzle puzzle;
+            IPuzzle? puzzle = null;
+
             int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
             int day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
 
@@ -42,11 +43,9 @@ namespace Advent_of_Code
                             {
                                 case 01:
                                     puzzle = new Year_2021.Day01();
-                                    puzzle.Solve();
                                     break;
                                 case 02:
                                     puzzle = new Year_2021.Day02();
-                                    puzzle.Solve();
                                     break;
                             }
                         }
@@ -54,6 +53,12 @@ namespace Advent_of_Code
                     case 2020:
                         break;
                 }
+
+                if (puzzle != null)
+                {
+                    puzzle.Solve();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -61,5 +66,6 @@ namespace Advent_of_Code
             }
                        
         }
+
     }
 }
