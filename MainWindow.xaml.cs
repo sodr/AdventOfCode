@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,25 +30,36 @@ namespace Advent_of_Code
         {
             IPuzzle puzzle;
             int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
-            int day = 01;
+            int day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
 
-            switch (year)
+            try
             {
-                case 2021:
-                    {
-                    switch (day)
+                switch (year)
+                {
+                    case 2021:
                         {
-                            case 01:
-                                puzzle = new Year_2021.Day01();
-                                puzzle.Solve();
-                                break;
-                           
+                            switch (day)
+                            {
+                                case 01:
+                                    puzzle = new Year_2021.Day01();
+                                    puzzle.Solve();
+                                    break;
+                                case 02:
+                                    puzzle = new Year_2021.Day02();
+                                    puzzle.Solve();
+                                    break;
+                            }
                         }
-                    }
-                    break;
-                case 2020:
-                    break;
-            }            
+                        break;
+                    case 2020:
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.Fail(ex.Message);
+            }
+                       
         }
     }
 }
