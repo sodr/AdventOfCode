@@ -21,23 +21,19 @@ namespace Advent_of_Code
 	/// </summary>
 	public partial class MainWindow : Window
 	{
-		public MainWindow()
-		{
-			InitializeComponent();
-		}
+		IPuzzle? puzzle = null;
+		int year, day;
 
-		private void ButtonRun_Click(object sender, RoutedEventArgs e)
-		{
-			IPuzzle? puzzle = null;
-
-			int year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
-			int day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
+		void Run()
+        {
+			year = Convert.ToInt32(MainWindow1.SelectorYear.Text);
+			day = Convert.ToInt32(MainWindow1.SelectorDay.Text);
 
 			try
 			{
 				switch (year)
 				{
-					case 2021:                        
+					case 2021:
 						switch (day)
 						{
 							case 01:
@@ -51,21 +47,32 @@ namespace Advent_of_Code
 							case 03:
 								puzzle = new Year_2021.Day03();
 								break;
-						}                        
+						}
 						break;
 
 					case 2020:
 						break;
 				}
-				
-				puzzle?.Solve();				
-				
+
+				puzzle?.Solve();
+
 			}
 			catch (Exception ex)
 			{
 				Debug.Fail(ex.Message);
 			}
-					   
+		}
+
+
+		public MainWindow()
+		{
+			InitializeComponent();
+			Run();
+		}
+
+		private void ButtonRun_Click(object sender, RoutedEventArgs e)
+		{
+			Run();  
 		}
 
 	}
