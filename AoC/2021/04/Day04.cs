@@ -87,8 +87,8 @@ namespace Advent_of_Code.Year_2021
 
         private static int[]? CheckBingo(Board board, Number bingoNumber)
         {
-            var bingoRow = board.Numbers.Where(x => x.Row == bingoNumber.Row && x.Marked);
-            var bingoCol = board.Numbers.Where(x => x.Col == bingoNumber.Col && x.Marked);
+            IEnumerable<Number> bingoRow = board.Numbers.Where(x => x.Row == bingoNumber.Row && x.Marked);
+            IEnumerable<Number> bingoCol = board.Numbers.Where(x => x.Col == bingoNumber.Col && x.Marked);
 
             // Check row
             if (bingoRow.Count() == 5)
