@@ -2,8 +2,6 @@
 
 My solutions to Advent of Code.
 
-It's not very pretty.
-
 ## Stars 
 
 |      | 2015 | 2016 | 2017 | 2018 | 2019 | 2020 | 2021 | 2021 |
