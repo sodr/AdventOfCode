@@ -37,13 +37,13 @@ namespace Advent_of_Code.Year_2021
             };
 
             // For every row
-            for (int i = 0; i < inputLines.Count(); i++)
-            {
+            foreach (string inputLine in inputLines)
+            {            
                 // Check if we are on a bingo board
-                if (inputLines[i] != string.Empty)
+                if (inputLine != string.Empty)
                 {
                     // Get all numbers in row
-                    int[]? rowNumbers = Array.ConvertAll(inputLines[i].Split(" ", StringSplitOptions.RemoveEmptyEntries), int.Parse);
+                    int[]? rowNumbers = Array.ConvertAll(inputLine.Split(" ", StringSplitOptions.RemoveEmptyEntries), int.Parse);
 
                     // For every number on the row
                     foreach (int number in rowNumbers)
