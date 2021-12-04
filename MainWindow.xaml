@@ -25,7 +25,8 @@
         <ComboBox x:Name="SelectorDay" Grid.Row="2" SelectedIndex="0" Margin="15,0,15,0" MaxHeight="25" Padding="6,3,7,3" VerticalAlignment="Top">
             <ComboBoxItem Content="01"/>
             <ComboBoxItem Content="02"/>
-            <ComboBoxItem Content="03" IsSelected="True"/>
+            <ComboBoxItem Content="03"/>
+            <ComboBoxItem Content="04" IsSelected="True"/>
         </ComboBox>
         <Button x:Name="ButtonRun" Content="Run" Grid.Row="2" Grid.Column="1" Margin="100,100,5,100" Background="#FF154A1A" Foreground="#FFFDFDFD" FontWeight="Bold" FontSize="24" Click="ButtonRun_Click"/>
 
