@@ -10,8 +10,7 @@ namespace Advent_of_Code.Year_2021
     {       
         internal class Number
         {
-            public int Row;
-            public int Col;
+            public int Row, Col;
             public bool Marked;
             public int Value;
         }
@@ -19,7 +18,6 @@ namespace Advent_of_Code.Year_2021
         internal class Board
         {
             public int Id;
-            public int MarkedNumbersCount;
             public bool Winner;
             public List<Number> Numbers = new();
         }
@@ -83,6 +81,7 @@ namespace Advent_of_Code.Year_2021
                     currentRow = 0;
                 }               
             }
+
             return boards;
         }
 
@@ -95,14 +94,14 @@ namespace Advent_of_Code.Year_2021
             if (bingoRow.Count() == 5)
             {
                 // BINGO!
-                return bingoRow.OrderBy(x => x.Value).Select(x => x.Value).ToArray();
+                return bingoRow.OrderBy(x => x.Col).Select(x => x.Value).ToArray();
             }
 
             // Check col
             if (bingoCol.Count() == 5)
             {
                 // BINGO!
-                return bingoCol.OrderBy(x => x.Value).Select(x => x.Value).ToArray();
+                return bingoCol.OrderBy(x => x.Row).Select(x => x.Value).ToArray();
             }
 
             // no bingo :(
@@ -137,7 +136,6 @@ namespace Advent_of_Code.Year_2021
                     {
                         // Mark the number on the board
                         bingoNumber.Marked = true;
-                        board.MarkedNumbersCount++;
 
                         // Check board for bingo
                         winningNumbers = CheckBingo(board, bingoNumber);
@@ -161,23 +159,23 @@ namespace Advent_of_Code.Year_2021
             // Write result
             if (winningBoard != null && winningNumbers != null)
             {
-                int umarkedNumbersSum = winningBoard?.Numbers.Where(x => !x.Marked).Sum(x => x.Value) ?? 0;
-                result = $"Winning board: {winningBoard?.Id}{Environment.NewLine}";
+                int umarkedNumbersSum = winningBoard.Numbers.Where(x => !x.Marked).Sum(x => x.Value);
+                result = $"Winning board: {winningBoard.Id}{Environment.NewLine}";
                 result += $"Winning numbers: {string.Join(", ", winningNumbers)}{Environment.NewLine}";
                 result += $"Score: {winningNumber * umarkedNumbersSum}";
-            }            
+            }
 
             return result;
         }
 
         public override string? Part1()
         {
-            return PlayBingo(true);
+            return PlayBingo(stopWhenBingo: true);
         }
 
         public override string? Part2()
         {
-            return PlayBingo(false);
+            return PlayBingo(stopWhenBingo: false);
         }   
 
         public Day04()
