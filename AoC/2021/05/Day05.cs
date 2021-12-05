@@ -51,33 +51,24 @@ namespace Advent_of_Code.Year_2021
                 Math.Max(lines.Max(x => x.Start.X), lines.Max(x => x.End.X)) + 1
             ];
 
-            var horizontalLines = lines.Where(a => a.Start.Y == a.End.Y).ToList();
-            var verticalLines = lines.Where(a => a.Start.X == a.End.X).ToList();
+            List<Line> horizontalLines = lines.Where(a => a.Start.Y == a.End.Y).ToList();
+            List<Line> verticalLines = lines.Where(a => a.Start.X == a.End.X).ToList();
+            List<Line> straigtLines = horizontalLines.Concat(verticalLines).ToList();
 
-            foreach (var line in horizontalLines)
-            {              
+            foreach (var line in straigtLines)
+            {
                 if (line.Start.X > line.End.X)
                     line.ReverseHorisontal();
 
-                var y = line.Start.Y;
-                for (int x = line.Start.X; x <= line.Start.X + (line.End.X - line.Start.X); x++)
-                {
-                    oceanFloor[y, x]++;
-                    //Print(WriteOceanFloor(oceanFloor));
-                }                
-            }
-
-
-            foreach (var line in verticalLines)
-            {
                 if (line.Start.Y > line.End.Y)
                     line.ReverseVertical();
 
-                var x = line.Start.X;
-                for (int y = line.Start.Y; y <= line.Start.Y + (line.End.Y - line.Start.Y); y++)
+                for (int x = line.Start.X; x <= line.Start.X + (line.End.X - line.Start.X); x++)
                 {
-                    oceanFloor[y, x]++;
-                    //Print(WriteOceanFloor(oceanFloor));
+                    for (int y = line.Start.Y; y <= line.Start.Y + (line.End.Y - line.Start.Y); y++)
+                    {
+                        oceanFloor[y, x]++;
+                    }
                 }
             }
 
@@ -111,7 +102,7 @@ namespace Advent_of_Code.Year_2021
             { 
                 for (int j = 0; j < oceanFloor.GetLength(1); j++)
                 {
-                    output += oceanFloor[i, j];// == 0 ? "." : oceanFloor[i, j];
+                    output += oceanFloor[i, j] == 0 ? "." : oceanFloor[i, j];
                 }
                 output += Environment.NewLine;
             }
