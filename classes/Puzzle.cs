@@ -30,8 +30,8 @@ namespace Advent_of_Code
                 
         internal string input = string.Empty;
         private string? FolderPath;
-        private string? output1;
-        private string? output2;
+        public string? output1;
+        public string? output2;
 
         internal void AutoSetFolderPath([CallerFilePath] string sourceFilePath = "")
         {
@@ -54,7 +54,7 @@ namespace Advent_of_Code
         {
             if (!string.IsNullOrEmpty(output1))
             {
-                File.WriteAllTextAsync(FolderPath + @"\Output1.txt", output1);
+                File.WriteAllText(FolderPath + @"\Output1.txt", output1);
             }
             else
             {
@@ -63,7 +63,7 @@ namespace Advent_of_Code
 
             if (!string.IsNullOrEmpty(output2))
             {
-                File.WriteAllTextAsync(FolderPath + @"\Output2.txt", output2);                
+                File.WriteAllText(FolderPath + @"\Output2.txt", output2);                
             }            
         }
     }

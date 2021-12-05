@@ -26,7 +26,8 @@
             <ComboBoxItem Content="01"/>
             <ComboBoxItem Content="02"/>
             <ComboBoxItem Content="03"/>
-            <ComboBoxItem Content="04" IsSelected="True"/>
+            <ComboBoxItem Content="04"/>
+            <ComboBoxItem Content="05" IsSelected="True"/>
         </ComboBox>
         <Button x:Name="ButtonRun" Content="Run" Grid.Row="2" Grid.Column="1" Margin="100,100,5,100" Background="#FF154A1A" Foreground="#FFFDFDFD" FontWeight="Bold" FontSize="24" Click="ButtonRun_Click"/>
 
