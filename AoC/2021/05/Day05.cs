@@ -63,6 +63,7 @@ namespace Advent_of_Code.Year_2021
                 if (line.Start.Y > line.End.Y)
                     line.ReverseVertical();
 
+                                
                 for (int x = line.Start.X; x <= line.Start.X + (line.End.X - line.Start.X); x++)
                 {
                     for (int y = line.Start.Y; y <= line.Start.Y + (line.End.Y - line.Start.Y); y++)
@@ -72,7 +73,25 @@ namespace Advent_of_Code.Year_2021
                 }
             }
 
-            int lineOverlaps = 0;
+            /*foreach (var line in straigtLines)
+            {
+                
+                int lineLength = Math.Max((line.End.X - line.Start.X), (line.End.Y - line.Start.Y));
+                int currentLength = 0;
+
+                while (lineLength > currentLength)
+                {
+                    int xLength = currentLength + (line.End.X - line.Start.X);
+                    int yLength = line.End.Y - line.Start.Y;
+
+                    int x = line.Start.X + currentLength;
+
+                    currentLength++;
+                }
+            }*/
+
+
+                int lineOverlaps = 0;
             for (int i = 0; i < oceanFloor.GetLength(0); i++)
             {
                 for (int j = 0; j < oceanFloor.GetLength(1); j++)
@@ -82,8 +101,8 @@ namespace Advent_of_Code.Year_2021
                 
             }
 
-            //string result = String.Empty;
-            string result = WriteOceanFloor(oceanFloor) + Environment.NewLine;
+            string result = String.Empty;
+            //string result = WriteOceanFloor(oceanFloor) + Environment.NewLine;
             result += $"Overlaping lines: {lineOverlaps}";
 
             return result;
