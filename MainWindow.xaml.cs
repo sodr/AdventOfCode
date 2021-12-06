@@ -51,6 +51,10 @@ namespace Advent_of_Code
 							case 04:
 								puzzle = new Year_2021.Day04();
 								break;
+
+							case 06:
+								puzzle = new Year_2021.Day06();
+								break;
 						}
 						break;
 
