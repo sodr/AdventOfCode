@@ -7,48 +7,51 @@ using System.Threading.Tasks;
 namespace Advent_of_Code.Year_2021
 {
     internal class Day06 : Puzzle
-    {
-        string CalculateFishes(int days, bool printFishes = false)
+    {      
+        string CalculateFishes(int days)
         {
-            List<int> lanternFishes = Array.ConvertAll(input.Split(","), int.Parse).ToList();
+            // Observe the fishes
+            List<long> lanternFishes = Array.ConvertAll(input.Split(","), long.Parse).ToList();
 
-            string result = "Initial state: " + string.Join(", ", lanternFishes) + Environment.NewLine;
-
-            for (int day = 1; day <= days; day++)
+            // Count the fishes
+            long[] fishes = new long[9];
+            for (int i = 0; i < fishes.Length; i++)
             {
-                int numberOfFishes = lanternFishes.Count();
-                for (int i = 0; i < numberOfFishes; i++)
-                {
-                    lanternFishes[i]--;
-
-                    if (lanternFishes[i] == -1)
-                    {
-                        lanternFishes[i] = 6;
-                        lanternFishes.Add(8);
-                    }
-
-                }
-
-                if (printFishes)
-                {
-                    string s = day == 1 ? " day:  " : " days: ";
-                    result += $"After {day.ToString().PadLeft(2)}{s}{string.Join(", ", lanternFishes)}{Environment.NewLine}";
-                }                
+               fishes[i] = lanternFishes.Where(x => x == i).Count();
             }
 
-            string fishesResult = $"Number of fishes: {lanternFishes.Count()}{Environment.NewLine}{Environment.NewLine}";
+            // For every day
+            for (int day = 1; day <= days; day++)
+            {
+                // Count the fishes that are about to reproduce            //                           ,--...,
+                long newFishes = fishes[0];                                //                          .''-..'     _
+                                                                           //                         /@    `.-:  _/`
+                // Move all fishes -1 day                                  //                         > )<  ,-.: (_)
+                for (int i = 1; i < fishes.Length; i++)                    //                          `..-',:-
+                {                                                          //                    ,--..   `-'
+                    fishes[i-1] = fishes[i];                               //                   .''-.,'     _
+                }                                                          //                  /@    `.-:  (_)
+                                                                           //                  > )<  ,-.:   +
+                // Reset motherfishes                                      //                   `..-',` 
+                fishes[6] += newFishes;                                    //                     `-'
 
-            return fishesResult + result;
+                // Add new born baby fishes
+                fishes[8] = newFishes;        // Aww! They are super cute!            >('>
+            }
+
+            // Count the number of fishes
+            long numberOfFishes = fishes.Sum();
+            return $"Number of lanternfishes after {days} days: {numberOfFishes}";
         }
 
         public override string? Part1()
         {
-            return CalculateFishes(days: 80, printFishes: true);
+            return CalculateFishes(days: 80);
         }
 
         public override string? Part2()
         {
-            return null; // CalculateFishes(days: 256, printFishes: false);
+            return CalculateFishes(days: 256);
         }
 
         public Day06()
